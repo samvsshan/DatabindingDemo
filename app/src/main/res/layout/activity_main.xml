@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="userInfoHandler"
+            type="com.example.repluginsun.model.UserInfoHandler"/>
+
+        <variable
+            name="adapter"
+            type="com.example.repluginsun.model.RecycleViewAdapter"/>
+
+        <variable
+            name="constants"
+            type="com.example.repluginsun.model.Constants"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello World！我是一个插件！"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:id="@+id/btn_start_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="启动宿主应用的主界面!"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/tv"
+            android:onClick="@{()->userInfoHandler.startHostActivity(context,constants.MAINACTIVITY_PATH)}"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_test"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"
+            android:layout_below="@+id/btn_start_main"
+            android:layout_above="@+id/tv_version"
+            android:layout_centerHorizontal="true"
+            app:adapter="@{adapter}"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:text="v1.0"
+            android:textSize="14sp"
+            android:layout_margin="10dp"
+            android:id="@+id/tv_version" />
+
+    </RelativeLayout>
+</layout>

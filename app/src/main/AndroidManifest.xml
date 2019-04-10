@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.repluginsun">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <!--声明插件的别名，如果不申明，内置插件的文件名为插件名，外置插件包名作为插件名
+        所以可能会导致问题，如果代码里面调用内置插件的时候写死了文件名，
+        如果使用install方法升级了内置插件，内置插件就编程了外置插件，
+        这样插件名就改了，写死的文件名会出问题。内置插件最好文件名和插件别名一致-->
+        <meta-data
+            android:name="com.qihoo360.plugin.name"
+            android:value="plugindemo1"/>
+
+        <activity
+            android:name=".MainActivity"
+            android:launchMode="singleInstance">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
